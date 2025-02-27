@@ -24,9 +24,6 @@ export const forgetPassword = async (req, res) => {
     console.log("Saving user with reset token:", user); // Log before saving
     await user.save();
 
-    // Log the user object after saving to confirm changes
-    console.log("User after save:", user);
-
     // Send the reset email
     await sendResetPasswordEmail(user.email, resetToken);
 
