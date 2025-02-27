@@ -112,7 +112,7 @@ app.get("/api/v1/flightOffers", async (req, res) => {
     max: 200,
     children,
   };
-  console.log(searchParams.max);
+
 
   if (returnDate) searchParams.returnDate = returnDate;
 
@@ -120,7 +120,7 @@ app.get("/api/v1/flightOffers", async (req, res) => {
     const response = await amadeus.shopping.flightOffersSearch.get(
       searchParams
     );
-    console.log(response.result);
+
 
     res.json(response.result);
   } catch (error) {
