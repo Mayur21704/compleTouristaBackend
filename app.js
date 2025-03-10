@@ -113,14 +113,12 @@ app.get("/api/v1/flightOffers", async (req, res) => {
     children,
   };
 
-
   if (returnDate) searchParams.returnDate = returnDate;
 
   try {
     const response = await amadeus.shopping.flightOffersSearch.get(
       searchParams
     );
-
 
     res.json(response.result);
   } catch (error) {
@@ -137,8 +135,6 @@ app.get("/api/v1/gethotels", async (req, res) => {
 
   res.json(response.data);
 });
-
-// app.use("/api/users", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
