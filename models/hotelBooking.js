@@ -6,7 +6,7 @@ const hotelBookingSchema = new Schema(
     userId: {
       type: String,
       ref: "User",
-      required: true, // Make it optional
+      required: true, 
     },
     selectedRoomWithHotel: {
       type: Object,
