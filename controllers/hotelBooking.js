@@ -7,7 +7,6 @@ export const createHotelBooking = async (req, res) => {
     const { selectedRoomWithHotel, guests, userId: uid } = req.body;
     console.log(selectedRoomWithHotel, guests, uid);
 
-    // Ensure that userId is passed in the request
     if (!uid) {
       return res.status(400).json({ error: "userId is required." });
     }
@@ -26,19 +25,17 @@ export const createHotelBooking = async (req, res) => {
       createdAt: Date.now(),
     });
 
-    // Save the booking to the database
     await newBooking.save();
 
-    // Step 3: Send email confirmation using Nodemailer
     const transporter = nodemailer.createTransport({
-      service: "gmail", // Change this if using a different email provider
+      service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER, // Your email
-        pass: process.env.EMAIL_PASSWORD, // Replace with your email password or app-specific password
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
       },
     });
 
-    const guestDetails = guests.adults[0]; // Assuming the first adult guest is the main contact
+    const guestDetails = guests.adults[0];
 
     // Prepare the email content
     const emailHtml = `

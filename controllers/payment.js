@@ -18,8 +18,6 @@ export const getSessionStatus = async (req, res) => {
 };
 
 export const createPayment = async (req, res) => {
-  console.log(req.body);
-
   const { currency = "inr", total } = req.body;
   const amount = Math.round(Number(total) * 100);
   console.log(currency, total);

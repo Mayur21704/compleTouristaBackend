@@ -230,32 +230,28 @@ export const createBooking = async (req, res) => {
   try {
     const { selectedFlights, passengers, userId: uid, email } = req.body;
 
-    // Ensure that userId and email are passed in the request
     if (!uid || !email) {
       return res.status(400).json({ error: "userId and email are required." });
     }
-
     const user = await User.findOne({ uid: uid });
     if (!user) {
       return res.status(400).json({ error: "User not found" });
     }
 
-    // Step 1: Generate the ticket (image in this case) in memory and upload it to Cloudinary
     const ticketUrl = await generateTicket(
       selectedFlights,
       passengers,
       uid,
       email
-    ); // This returns the URL from Cloudinary after upload
+    );
 
-    // Step 2: Save the booking with the Cloudinary URL
     const newBooking = new Booking({
       userId: uid,
       email: email,
       selectedFlights,
       passengers,
       status: "confirmed",
-      ticketUrl: ticketUrl, // Cloudinary URL of the uploaded ticket
+      ticketUrl: ticketUrl,
       createdAt: Date.now(),
     });
 

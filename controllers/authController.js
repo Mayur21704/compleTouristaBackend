@@ -1,5 +1,3 @@
-
-
 import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 
@@ -95,7 +93,6 @@ export const loginUser = async (req, res) => {
 
 export const googleLogin = async (req, res) => {
   const { email, uid, displayName, photoURL } = req.body;
-  console.log(req.body);
 
   if (!email || !uid) {
     return res
