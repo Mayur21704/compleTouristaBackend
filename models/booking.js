@@ -29,13 +29,13 @@ const bookingSchema = new Schema(
       required: true,
     },
     cancellationDate: {
-      type: Date, // Stores the date when the booking was cancelled
+      type: Date, 
       default: null,
     },
     refundStatus: {
       type: String,
       enum: ["pending", "processed", "failed"],
-      default: "pending", // Tracks the status of the refund process
+      default: "pending", 
     },
   },
   {

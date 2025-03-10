@@ -300,7 +300,7 @@ export const cancelBooking = async (req, res) => {
     booking.cancellationDate = new Date();
 
     // Optionally, track refund status
-    booking.refundStatus = "pending"; // You could implement refund logic separately
+    booking.refundStatus = "processed"; // You could implement refund logic separately
 
     // Save the changes
     await booking.save();
