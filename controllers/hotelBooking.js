@@ -5,7 +5,6 @@ import nodemailer from "nodemailer";
 export const createHotelBooking = async (req, res) => {
   try {
     const { selectedRoomWithHotel, guests, userId: uid } = req.body;
-    console.log(selectedRoomWithHotel, guests, uid);
 
     if (!uid) {
       return res.status(400).json({ error: "userId is required." });

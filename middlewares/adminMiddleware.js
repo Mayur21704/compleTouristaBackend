@@ -10,10 +10,8 @@ export const isAdmin = async (req, res, next) => {
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET); // Make sure to use your JWT secret
-    console.log(decoded);
 
     const user = await User.findOne({ uid: decoded.uid }); // Find user by 'uid'
-    console.log(user);
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });

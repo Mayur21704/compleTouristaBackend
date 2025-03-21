@@ -18,7 +18,6 @@ export const registerUser = async (req, res) => {
       // If user already exists, we return an error
       return res.status(400).json({ error: "Email already registered!" });
     }
-    console.log("pass", password);
 
     // If user is new and registering with email/password, we hash the password
     if (password) {

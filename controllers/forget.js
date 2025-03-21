@@ -6,7 +6,6 @@ export const forgetPassword = async (req, res) => {
   const {
     email: { email },
   } = req.body; // Assumes email is directly passed in body
-  console.log("Email:", email);
 
   try {
     // Check if the user exists
@@ -21,7 +20,6 @@ export const forgetPassword = async (req, res) => {
     // Save the reset token and its expiration time to the user model
     user.resetToken = resetToken;
     user.resetTokenExpiration = Date.now() + 3600000; // Token expires in 1 hour
-    console.log("Saving user with reset token:", user); // Log before saving
     await user.save();
 
     // Send the reset email

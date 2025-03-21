@@ -278,7 +278,6 @@ export const createBooking = async (req, res) => {
 
 export const cancelBooking = async (req, res) => {
   try {
-    console.log(req.params);
     const { bookingId } = req.params;
 
     // Find the booking by ObjectId
@@ -318,10 +317,8 @@ export const cancelBooking = async (req, res) => {
 
 export const getUserBookings = async (req, res) => {
   try {
-    console.log(req.params);
 
     const { userId } = req.params; // Assuming the userId is passed as a route parameter
-    console.log(userId);
 
     // Fetch all bookings where the userId matches the user's ObjectId
     const flightbookings = await Booking.find({ userId }).exec(); // No need to query the User model directly, just the Booking model
