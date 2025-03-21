@@ -20,14 +20,12 @@ export const getSessionStatus = async (req, res) => {
 export const createPayment = async (req, res) => {
   const { currency = "inr", total } = req.body;
   const amount = Math.round(Number(total) * 100);
-  console.log(currency, total);
 
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency,
     });
-    console.log(paymentIntent.client_secret);
 
     res.send({
       clientSecret: paymentIntent.client_secret,

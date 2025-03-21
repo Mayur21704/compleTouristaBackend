@@ -233,6 +233,7 @@ export const createBooking = async (req, res) => {
     if (!uid || !email) {
       return res.status(400).json({ error: "userId and email are required." });
     }
+
     const user = await User.findOne({ uid: uid });
     if (!user) {
       return res.status(400).json({ error: "User not found" });

@@ -108,7 +108,6 @@ app.get("/api/v1/flightOffers", async (req, res) => {
     currencyCode,
     nonStop,
     travelClass,
-    // max: Math.floor(Math.random() * (250 - 1 + 1)) + 1,
     max: 200,
     children,
   };
